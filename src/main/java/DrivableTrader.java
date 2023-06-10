@@ -25,9 +25,22 @@ class DrivableTrader extends Trader<Drivable> {
     public DrivableTrader(List<Drivable> inventory, List<Drivable> wishlist, int money) {
         super(inventory, wishlist, money);
     }
+
+    /**
+     * Construct a DrivableTrader, giving them the given inventory,
+     * wishlist, and money.
+     *
+     * @param money     The Trader's money
+     */
     public DrivableTrader(int money) {
         super(money);
     }
+
+    /**
+     * Return the selling price of an item, if it's Tradable.
+     *
+     * @param item an instance of Drivable
+     */
     @Override
     public int getSellingPrice(Drivable item) {
         if (item instanceof Tradable) {

@@ -19,7 +19,6 @@ public class Trader<T> {
     private final List<T> wishlist;
     private int money;
 
-
     /**
      * Construct a Trader, giving them the given inventory,
      * wishlist, and money.
@@ -39,24 +38,29 @@ public class Trader<T> {
      *       representing the Trader's money. Give the Trader
      *       empty ArrayLists for their inventory and wishlist.
      */
+    /**
+     * Construct a Trader, giving them the given inventory,
+     * wishlist, and money.
+     *
+     * @param money     The Trader's money
+     */
     public Trader(int money) {
         this.inventory = new ArrayList<>();
         this.wishlist = new ArrayList<>();
         this.money = money;
     }
 
-
-
-
     /* TODO: Implement the method addToWishlist that takes an
      *       object of type T and adds it to this Trader's wishlist.
+     */
+    /**
+     * Add item to wishlist.
+     *
+     * @param item     item to be added to wishlist
      */
     public void addToWishlist(T item) {
         wishlist.add(item);
     }
-
-
-
 
     /* TODO: Implement the method getSellingPrice that takes an
      *       object of type T and returns the object's price
@@ -65,6 +69,11 @@ public class Trader<T> {
      *
      *       We will call this in exchangeMoney().
      */
+    /**
+     * Return the selling price of an item, if it's Tradable.
+     *
+     * @param item the item for which we want to determine the price.
+     */
     public int getSellingPrice(T item) {
         if (item instanceof Tradable) {
             return ((Tradable) item).getPrice();
@@ -72,9 +81,6 @@ public class Trader<T> {
             return Tradable.MISSING_PRICE;
         }
     }
-
-
-
 
     /**
      * Exchange money from other to this Trader according to the price of item,
@@ -128,7 +134,6 @@ public class Trader<T> {
     public boolean buyFrom(Trader<T> other) {
         return other.sellTo(this);
     }
-
 
     @Override
     public String toString() {
